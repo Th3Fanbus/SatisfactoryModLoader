@@ -2,6 +2,7 @@
 #include "FGGameMode.h"
 #include "FGPlayerController.h"
 #include "Subsystem/SubsystemActorManager.h"
+#include "Net/UnrealNetwork.h"
 
 ASessionSettingsSubsystem::ASessionSettingsSubsystem() {
 	ReplicationPolicy = ESubsystemReplicationPolicy::SpawnOnServer_Replicate;
