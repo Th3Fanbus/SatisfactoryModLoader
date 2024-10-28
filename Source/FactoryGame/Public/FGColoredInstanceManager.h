@@ -57,6 +57,7 @@ public:
 
 	private:
 		friend UFGColoredInstanceManager;
+		friend class URRDLColoredStaticMesh; // MODDING EDIT
 
 		TArray<float> CustomData;
 		int32 HandleID = INDEX_NONE;
