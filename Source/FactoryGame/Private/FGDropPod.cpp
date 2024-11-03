@@ -55,7 +55,7 @@ void AFGDropPod::PreSave(FObjectPreSaveContext SaveContext)
 	// Cache scannable data from the world during the cooking process
 	// Avoid attempting to cache the data on the CDOs and Archetypes, and objects without a world context
 	if (SaveContext.IsCooking() && !HasAnyFlags(RF_ClassDefaultObject | RF_ArchetypeObject) && GetWorld() != nullptr) {
-		mDropPodGuid = GetActorInstanceGuid();
+		mDropPodGuid = GetActorGuid();
 	}
 #endif
 }
