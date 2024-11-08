@@ -11,10 +11,6 @@
 #include "WorldPartition/WorldPartitionActorDesc.h"
 #endif
 
-FWorldScannableData::FWorldScannableData()
-{
-}
-
 #if WITH_EDITOR
 
 FWorldScannableData::FWorldScannableData(const AActor* actor)
