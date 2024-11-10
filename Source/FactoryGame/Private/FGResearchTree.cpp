@@ -51,7 +51,10 @@ EDataValidationResult UFGResearchTree::IsDataValid(TArray<FText>& ValidationErro
 		//Make sure class is not garbage collected
 		ResearchTreeNodeClass->AddToRoot();
 
-		NodeDataStructProperty = CastFieldChecked<FStructProperty>(ResearchTreeNodeClass->FindPropertyByName(TEXT("mNodeDataStruct")));
+		NodeDataStructProperty = CastField<FStructProperty>(ResearchTreeNodeClass->FindPropertyByName(TEXT("mNodeDataStruct")));
+		if (!NodeDataStructProperty) {
+			return ValidationResult;
+		}
 
 		// Generated structs names contain GUIDs, so we can't use FindPropertyByName
 		for(FField* StructProp = NodeDataStructProperty->Struct->ChildProperties; StructProp; StructProp = StructProp->Next) {
@@ -62,6 +65,10 @@ EDataValidationResult UFGResearchTree::IsDataValid(TArray<FText>& ValidationErro
 				}
 			}
 		}
+	}
+
+	if (!NodeDataStructProperty || !SchematicStructProperty) {
+		return ValidationResult;
 	}
 
 	const TArray<UFGResearchTreeNode*> Nodes = UFGResearchTree::GetNodes(GetClass());
